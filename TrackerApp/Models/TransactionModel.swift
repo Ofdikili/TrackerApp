@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct TransactionModel : Identifiable{
+struct TransactionModel : Identifiable , Decodable , Hashable{
     let id: Int
     let date: String
     let institution: String
