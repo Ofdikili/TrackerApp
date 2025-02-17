@@ -11,10 +11,11 @@ struct ContentView: View {
     var body: some View {
         NavigationView{
             ScrollView{
-                VStack{
+                VStack(spacing:10){
                     Text("Overview")
                         .font(.title2)
                         .bold(true)
+                    RecentTransactionListView()
                 }.padding()
                     .frame(maxWidth:.infinity)
                 
@@ -32,11 +33,11 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
-}
-
-#Preview("Dark View") {
-    ContentView()
-        .preferredColorScheme(.dark)
+    let transactionListVm: TransactionViewModel = {
+        let vm=TransactionViewModel()
+        vm.transactions = MockTransactionService.transactions
+        return vm
+    }()
+    ContentView().environmentObject(transactionListVm)
 }
 

@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct TrackerAppApp: App {
+    @StateObject var transactionVm = TransactionViewModel()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(transactionVm)
         }
     }
 }
